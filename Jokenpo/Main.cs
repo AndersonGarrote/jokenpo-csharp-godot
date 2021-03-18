@@ -15,39 +15,28 @@ public class Main : Control
 
     [Export]
     private NodePath Player1 { get; set; }
-    private Node Player1Node;
+    private Node Player1Node { get => this.GetNode(Player1); }
 
     [Export]
     private NodePath Player2 { get; set; }
-    private Node Player2Node;
+    private Node Player2Node { get => this.GetNode(Player2); }
+
 
     [Export]
     private NodePath Result { get; set; }
-    private Node ResultNode;
-    
+    private Node ResultNode { get => this.GetNode(Result); }
+
     public int Player1Option { get; set; }
     public int Player2Option { get; set; }
 
     private int _playersWaiting;
 
-    public override void _Ready()
-    {
-        _OnReady();
-    }
-
-    private void _OnReady()
-    {    
-        Player1Node = this.GetNode(Player1);
-        Player2Node = this.GetNode(Player2);
-        ResultNode = this.GetNode(Result);
-    }
-
     private void _OnPlayer1ButtonPressed()
     {
-        IEnumerable<Button> children = Player1Node.GetChild(0).GetChildren().Cast<Button>();
-        GD.Print(children.First<Button>( b => b.Pressed ).Name);
-        string name = children.First<Button>( b => b.Pressed ).Name;
-        int newOption = NameToOptions[name.Substring(0, name.LastIndexOf("Button"))];
+        var children = Player1Node.GetChild(0).GetChildren().Cast<Button>();
+        // GD.Print(children.First<Button>( b => b.Pressed ).Name);
+        string name = GetPressedButton(children).Name;
+        int newOption = NewOptionFromButtonName(name);
         this.Player1Option = newOption;
 
         _SetButtonsDisabled(Player1Node);
@@ -55,12 +44,14 @@ public class Main : Control
         _WaitAllPlayers();
     }
 
+    private int NewOptionFromButtonName(string name) => NameToOptions[name.Substring(0, name.LastIndexOf("Button"))];
+
     private void _OnPlayer2ButtonPressed()
     {
-        IEnumerable<Button> children = Player2Node.GetChild(0).GetChildren().Cast<Button>();
-        GD.Print(children.First<Button>( b => b.Pressed ).Name);
-        string name = children.First<Button>( b => b.Pressed ).Name;
-        int newOption = NameToOptions[name.Substring(0, name.LastIndexOf("Button"))];
+        var children = Player2Node.GetChild(0).GetChildren().Cast<Button>();
+        // GD.Print(children.First<Button>(b => b.Pressed).Name);
+        string name = GetPressedButton(children).Name;
+        int newOption = NewOptionFromButtonName(name);
         this.Player2Option = newOption;
 
         _SetButtonsDisabled(Player2Node);
@@ -68,6 +59,9 @@ public class Main : Control
         _WaitAllPlayers();
 
     }
+
+    private static Button GetPressedButton(IEnumerable<Button> children) => children.First<Button>(b => b.Pressed);
+
     private void _UpdateWinner()
     {
         string message = "";
@@ -98,7 +92,7 @@ public class Main : Control
 
     private void _WaitAllPlayers()
     {
-        _playersWaiting ++;
+        _playersWaiting++;
 
         if (_playersWaiting == NumPlayers)
         {
@@ -109,20 +103,20 @@ public class Main : Control
 
     private void _SetButtonsDisabled(Node PlayerNode)
     {
-        IEnumerable<Button> children = PlayerNode.GetChild(0).GetChildren().Cast<Button>();
-        
+        var children = PlayerNode.GetChild(0).GetChildren().Cast<Button>();
+
         foreach (var child in children) child.Disabled = true;
     }
 
     private void _SetButtonsEnabled(Node PlayerNode)
     {
-        IEnumerable<Button> children = PlayerNode.GetChild(0).GetChildren().Cast<Button>();
-        
+        var children = PlayerNode.GetChild(0).GetChildren().Cast<Button>();
+
         foreach (var child in children)
         {
             child.Pressed = false;
             child.Disabled = false;
-        } 
+        }
     }
 
 }

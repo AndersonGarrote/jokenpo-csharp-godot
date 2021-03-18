@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.cs" type="Script" id=1]
 [ext_resource path="res://Result.gd" type="Script" id=2]
+[ext_resource path="res://Assets/sto.png" type="Texture" id=3]
+[ext_resource path="res://Assets/pap.png" type="Texture" id=4]
+[ext_resource path="res://Assets/sci.png" type="Texture" id=5]
+[ext_resource path="res://Assets/retro.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/ButtonActive.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/ButtonHover.tres" type="StyleBox" id=8]
 
-[sub_resource type="ButtonGroup" id=1]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="ButtonGroup" id=2]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="ButtonGroup" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="ButtonGroup" id=7]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -27,7 +45,7 @@ __meta__ = {
 }
 
 [node name="Player1" type="Control" parent="Lines"]
-margin_right = 1024.0
+margin_right = 600.0
 margin_bottom = 296.0
 size_flags_vertical = 3
 
@@ -40,53 +58,83 @@ __meta__ = {
 }
 
 [node name="StoneButton" type="Button" parent="Lines/Player1/Buttons"]
-margin_left = 429.0
-margin_top = 138.0
-margin_right = 477.0
-margin_bottom = 158.0
+margin_left = 116.0
+margin_top = 88.0
+margin_right = 236.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 toggle_mode = true
-group = SubResource( 1 )
-text = "Pedra"
+enabled_focus_mode = 0
+group = SubResource( 3 )
+icon = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PaperButton" type="Button" parent="Lines/Player1/Buttons"]
-margin_left = 481.0
-margin_top = 138.0
-margin_right = 528.0
-margin_bottom = 158.0
+margin_left = 240.0
+margin_top = 88.0
+margin_right = 360.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 toggle_mode = true
-group = SubResource( 1 )
-text = "Papel"
+enabled_focus_mode = 0
+group = SubResource( 3 )
+icon = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScissorButton" type="Button" parent="Lines/Player1/Buttons"]
-margin_left = 532.0
-margin_top = 138.0
-margin_right = 594.0
-margin_bottom = 158.0
+margin_left = 364.0
+margin_top = 88.0
+margin_right = 484.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 toggle_mode = true
-group = SubResource( 1 )
-text = "Tesoura"
+enabled_focus_mode = 0
+group = SubResource( 3 )
+icon = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Result" type="Control" parent="Lines"]
 margin_top = 300.0
-margin_right = 1024.0
+margin_right = 600.0
 margin_bottom = 300.0
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="WinnerLabel" type="Label" parent="Lines/Result"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 align = 1
 valign = 1
 __meta__ = {
@@ -95,7 +143,7 @@ __meta__ = {
 
 [node name="Player2" type="Control" parent="Lines"]
 margin_top = 304.0
-margin_right = 1024.0
+margin_right = 600.0
 margin_bottom = 600.0
 size_flags_vertical = 3
 
@@ -108,40 +156,61 @@ __meta__ = {
 }
 
 [node name="StoneButton" type="Button" parent="Lines/Player2/Buttons"]
-margin_left = 429.0
-margin_top = 138.0
-margin_right = 477.0
-margin_bottom = 158.0
+margin_left = 116.0
+margin_top = 88.0
+margin_right = 236.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 toggle_mode = true
-group = SubResource( 2 )
-text = "Pedra"
+enabled_focus_mode = 0
+group = SubResource( 7 )
+icon = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PaperButton" type="Button" parent="Lines/Player2/Buttons"]
-margin_left = 481.0
-margin_top = 138.0
-margin_right = 528.0
-margin_bottom = 158.0
+margin_left = 240.0
+margin_top = 88.0
+margin_right = 360.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 toggle_mode = true
-group = SubResource( 2 )
-text = "Papel"
+enabled_focus_mode = 0
+group = SubResource( 7 )
+icon = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScissorButton" type="Button" parent="Lines/Player2/Buttons"]
-margin_left = 532.0
-margin_top = 138.0
-margin_right = 594.0
-margin_bottom = 158.0
+margin_left = 364.0
+margin_top = 88.0
+margin_right = 484.0
+margin_bottom = 208.0
+focus_mode = 0
 size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 toggle_mode = true
-group = SubResource( 2 )
-text = "Tesoura"
+enabled_focus_mode = 0
+group = SubResource( 7 )
+icon = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

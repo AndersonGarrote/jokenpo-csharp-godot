@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Result",
+"language": "GDScript",
+"path": "res://Result.gd"
+} ]
 _global_script_class_icons={
-
+"Result": ""
 }
 
 [application]
@@ -19,9 +24,14 @@ config/name="Jokenpo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=600
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.317647, 0.662745, 0.419608, 1 )
 environment/default_environment="res://default_env.tres"
