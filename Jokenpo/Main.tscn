@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main.cs" type="Script" id=1]
+[ext_resource path="res://Result.gd" type="Script" id=2]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[sub_resource type="ButtonGroup" id=2]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+Player1 = NodePath("Lines/Player1")
+Player2 = NodePath("Lines/Player2")
+Result = NodePath("Lines/Result")
+
+[node name="Lines" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1" type="Control" parent="Lines"]
+margin_right = 1024.0
+margin_bottom = 296.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Lines/Player1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoneButton" type="Button" parent="Lines/Player1/Buttons"]
+margin_left = 429.0
+margin_top = 138.0
+margin_right = 477.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 1 )
+text = "Pedra"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaperButton" type="Button" parent="Lines/Player1/Buttons"]
+margin_left = 481.0
+margin_top = 138.0
+margin_right = 528.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 1 )
+text = "Papel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScissorButton" type="Button" parent="Lines/Player1/Buttons"]
+margin_left = 532.0
+margin_top = 138.0
+margin_right = 594.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 1 )
+text = "Tesoura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Result" type="Control" parent="Lines"]
+margin_top = 300.0
+margin_right = 1024.0
+margin_bottom = 300.0
+script = ExtResource( 2 )
+
+[node name="WinnerLabel" type="Label" parent="Lines/Result"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2" type="Control" parent="Lines"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Lines/Player2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoneButton" type="Button" parent="Lines/Player2/Buttons"]
+margin_left = 429.0
+margin_top = 138.0
+margin_right = 477.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 2 )
+text = "Pedra"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaperButton" type="Button" parent="Lines/Player2/Buttons"]
+margin_left = 481.0
+margin_top = 138.0
+margin_right = 528.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 2 )
+text = "Papel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScissorButton" type="Button" parent="Lines/Player2/Buttons"]
+margin_left = 532.0
+margin_top = 138.0
+margin_right = 594.0
+margin_bottom = 158.0
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 2 )
+text = "Tesoura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Lines/Player1/Buttons/StoneButton" to="." method="_OnPlayer1ButtonPressed"]
+[connection signal="pressed" from="Lines/Player1/Buttons/PaperButton" to="." method="_OnPlayer1ButtonPressed"]
+[connection signal="pressed" from="Lines/Player1/Buttons/ScissorButton" to="." method="_OnPlayer1ButtonPressed"]
+[connection signal="pressed" from="Lines/Player2/Buttons/StoneButton" to="." method="_OnPlayer2ButtonPressed"]
+[connection signal="pressed" from="Lines/Player2/Buttons/PaperButton" to="." method="_OnPlayer2ButtonPressed"]
+[connection signal="pressed" from="Lines/Player2/Buttons/ScissorButton" to="." method="_OnPlayer2ButtonPressed"]
